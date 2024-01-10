@@ -1,12 +1,12 @@
-def fibbonaciRecursive(n):
+def fibonacciRecursive(n):
     if n == 1:
         return 0
     elif n == 2:
         return 1
     
-    return fibbonaciRecursive(n-1) + fibbonaciRecursive(n-2)
+    return fibonacciRecursive(n-1) + fibonacciRecursive(n-2)
 
-def fibbonaciIterative(n):
+def fibonacciIterative(n):
     a = 0
     b = 1
 
