@@ -16,6 +16,3 @@ def fibbonaciIterative(n):
         b = c
 
     return c
-
-
-print(fibbonaciIterative(8))
