@@ -28,8 +28,19 @@
 def getBinaryStrings( n ):
     outList = []
 
-    for x in n * n:
-        print("A")
+    for x in range(0,pow(2,n)):
+        newList = []
+
+        num = x
+
+        for y in range(n):
+            newList.append(num % 2)
+            num = int(num / 2)
+            
+
+        newList.reverse()
+
+        outList.append(newList)
     
     # Hint: you may want to write additional helper routines
     return outList
