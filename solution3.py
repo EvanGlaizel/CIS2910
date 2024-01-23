@@ -23,22 +23,31 @@ def colorQuantize( img, rGroups, gGroups, bGroups ):
     for m in range(len(img)):
         for n in range(len(img[m])):
             rDivisor = 256/rGroups
+            gDivisor = 256/gGroups
+            bDivisor = 256/bGroups
 
-            for r in rGroups:
+            for r in range(rGroups):
                 if (n / rDivisor == r):
                     red = rDivisor * (r + 1) / 2
 
-            for g in gGroups:
+            for g in range(gGroups):
                 if (n / gDivisor == g):
                     green = gDivisor * (g + 1) / 2
 
-            for b in bGroups:
+            for b in range(bGroups):
                 if (n / bDivisor == b):
                     blue = bDivisor * (b + 1) / 2
 
             img[m][n] = [red, green, blue]
 
-    return img
+    print(img)
+    
+img = [[[255,255,255], [255,255,255], [255,255,255], [255,255,255], [100,100,100], [100,0,100]], [[0,0,0], [255,255,255], [56,34,12], [1,1,1], [100,100,100], [100,0,100]], [[255,255,255], [255,255,255], [255,255,255], [255,255,255], [100,100,100], [100,0,100]]]
+rGroups = 3
+gGroups = 3
+bGroups = 3
+
+colorQuantize(img, rGroups, gGroups, bGroups)
 
 # Testing and starter code provided in main(): 
 def main():
