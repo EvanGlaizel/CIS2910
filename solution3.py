@@ -16,38 +16,23 @@ def colorQuantize( img, rGroups, gGroups, bGroups ):
     green = 0
     blue = 0
 
-    rDivisor = 0
-    gDivisor = 0
-    bDivisor = 0
-
     for m in range(len(img)):
         for n in range(len(img[m])):
-            rDivisor = 256/rGroups
-            gDivisor = 256/gGroups
-            bDivisor = 256/bGroups
-
             for r in range(rGroups):
-                if (n / rDivisor == r):
-                    red = rDivisor * (r + 1) / 2
+                if (n // (len(img[m]) // rGroups) == r):
+                    red = (len(img[m]) // rGroups) * (r + 1) / 2
 
             for g in range(gGroups):
-                if (n / gDivisor == g):
-                    green = gDivisor * (g + 1) / 2
+                if (n // (len(img[m]) // gGroups) == g):
+                    green = (len(img[m]) // gGroups) * (g + 1) / 2
 
             for b in range(bGroups):
-                if (n / bDivisor == b):
-                    blue = bDivisor * (b + 1) / 2
+                if (n // (len(img[m]) // bGroups) == b):
+                    blue = (len(img[m]) // gGroups) * (b + 1) / 2
 
             img[m][n] = [red, green, blue]
 
-    print(img)
-    
-img = [[[255,255,255], [255,255,255], [255,255,255], [255,255,255], [100,100,100], [100,0,100]], [[0,0,0], [255,255,255], [56,34,12], [1,1,1], [100,100,100], [100,0,100]], [[255,255,255], [255,255,255], [255,255,255], [255,255,255], [100,100,100], [100,0,100]]]
-rGroups = 3
-gGroups = 3
-bGroups = 3
-
-colorQuantize(img, rGroups, gGroups, bGroups)
+    return img
 
 # Testing and starter code provided in main(): 
 def main():
