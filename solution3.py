@@ -13,19 +13,22 @@ import copy
 # Output: returns an array with the same dimensions as img, 
 #         with its color values quantized according to the specified groups
 def colorQuantize( img, rGroups, gGroups, bGroups ):
+    if (rGroups == 0 or gGroups == 0 or bGroups == 0):
+        return img
+
     for n in range(len(img)):
         for m in range(len(img[n])):
             for r in range(rGroups):
-                if (img[n][m][0] // (255 // rGroups) == r):
-                    red = (((255 // rGroups) * (r + 1)) + ((255 // rGroups) * r)) // 2
+                if (img[n][m][0] // (256 // rGroups) == r):
+                    red = (((256 // rGroups) * (r + 1)) + ((256 // rGroups) * r)) // 2
 
             for g in range(gGroups):
-                if (img[n][m][1] // (255 // gGroups) == g):
-                    green = (((255 // gGroups) * (g + 1)) + ((255 // gGroups) * g)) // 2
+                if (img[n][m][1] // (256 // gGroups) == g):
+                    green = (((256 // gGroups) * (g + 1)) + ((256 // gGroups) * g)) // 2
 
             for b in range(bGroups):
-                if (img[n][m][2] // (255 // bGroups) == b):
-                    blue = (((255 // bGroups) * (b + 1)) + ((255 // bGroups) * b)) // 2
+                if (img[n][m][2] // (256 // bGroups) == b):
+                    blue = (((256 // bGroups) * (b + 1)) + ((256 // bGroups) * b)) // 2
                     
             img[n][m] = [red, green, blue]
     return img
