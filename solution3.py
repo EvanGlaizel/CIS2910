@@ -12,23 +12,19 @@ from PIL import Image
 # Output: returns an array with the same dimensions as img, 
 #         with its color values quantized according to the specified groups
 def colorQuantize( img, rGroups, gGroups, bGroups ):
-    red = 0
-    green = 0
-    blue = 0
-
     for m in range(len(img)):
         for n in range(len(img[m])):
             for r in range(rGroups):
-                if (n // (len(img[m]) // rGroups) == r):
-                    red = (len(img[m]) // rGroups) * (r + 1) / 2
+                if (img[n][m][0] // (255 // rGroups) == r):
+                    red = (255 // rGroups) * (r + 1) / 2
 
             for g in range(gGroups):
-                if (n // (len(img[m]) // gGroups) == g):
-                    green = (len(img[m]) // gGroups) * (g + 1) / 2
+                if (img[n][m][1] // (255 // gGroups) == g):
+                    green = (255 // gGroups) * (g + 1) / 2
 
             for b in range(bGroups):
-                if (n // (len(img[m]) // bGroups) == b):
-                    blue = (len(img[m]) // gGroups) * (b + 1) / 2
+                if (img[n][m][2] // (255 // bGroups) == b):
+                    blue = (255 // gGroups) * (b + 1) / 2
 
             img[m][n] = [red, green, blue]
 
