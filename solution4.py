@@ -41,9 +41,9 @@ def countValidChessMoves( board ):
             elif (board[i][j] == 'N'):
                 for k in range(len(board)):
                     for l in range(len(board)):
-                        if (abs(board[k][l]) == 1 and abs(board[k][l] == 2)):
+                        if (abs(i - k) == 1 and abs(j - l == 2)):
                             moves += 1
-                        elif (abs(board[k][l]) == 2 and abs(board[k][l]) == 1):
+                        elif ((i - k) == 2 and abs(j - l) == 1):
                             moves += 1
             elif (board[i][j] == 'B'):
                 for k in range(len(board)):
