@@ -18,47 +18,113 @@
 def countValidChessMoves( board ):
     moves = 0
 
+    lastFound = 0
+
     for i in range(len(board)):
         for j in range(len(board[i])):
+
             if (board[i][j] == 'K'):
                 for k in range(i-1, i+2):
                     for l in range(j-1, j+2):
-                        if (board[k][l] == '-'):
-                            moves += 1
+                        if (k >= 0 and k < len(board) and l >= 0 and l < len(board[i])):
+                            if (board[k][l] == '-'):
+                                moves += 1
                 
             elif (board[i][j] == 'Q'):
-                for k in range(len(board)):
+
+                for k in range(i - 1,-1,-1):
                     if (board[k][j] == '-'):
                         moves += 1
-                for k in range(len(board[i])):
+                    else:
+                        break
+                for k in range(i+1,len(board)):
+                    if (board[k][j] == '-'):
+                        moves += 1
+                    else:
+                        break
+                for k in range(j - 1,-1,-1):
                     if (board[i][k] == '-'):
                         moves += 1
+                    else:
+                        break
+                for k in range(j+1,len(board[i])):
+                    if (board[i][k] == '-'):
+                        moves += 1
+                    else:
+                       break
 
+                for k in range(min(i,j) + 1):
+                    if (board[i-k][j-k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+                for k in range(min(i,7-j) + 1):
+                    if (board[i-k][j+k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+                for k in range(min(7 - i, j) + 1):
+                    if (board[i+k][j-k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+                for k in range(min(7 - i, 7 - j) + 1):
+                    if (board[i+k][j+k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+
+            elif (board[i][j] == 'N'): 
                 for k in range(len(board)):
-                    for l in range(len(board)):
-                        if (abs(i - k) == abs(j - l) and board[k][l] == '-'):
+                    for l in range(len(board[i])):
+                        if (abs(i - k) == 1 and abs(j - l) == 2 and board[k][l] == '-'):
                             moves += 1
-            elif (board[i][j] == 'N'):
-                for k in range(len(board)):
-                    for l in range(len(board)):
-                        if (abs(i - k) == 1 and abs(j - l == 2)):
+                        elif (abs(i - k) == 2 and abs(j - l) == 1 and board[k][l] == '-'):
                             moves += 1
-                        elif ((i - k) == 2 and abs(j - l) == 1):
-                            moves += 1
+
             elif (board[i][j] == 'B'):
-                for k in range(len(board)):
-                    for l in range(len(board)):
-                        if (abs(i - k) == abs(j - l) and board[k][l] == '-'):
-                            moves += 1
+                for k in range(min(i,j) + 1):
+                    if (board[i-k][j-k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+                for k in range(min(i,7-j) + 1):
+                    if (board[i-k][j+k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+                for k in range(min(7 - i, j) + 1):
+                    if (board[i+k][j-k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+                for k in range(min(7 - i, 7 - j) + 1):
+                    if (board[i+k][j+k] == '-'):
+                        moves += 1
+                    elif (k != 0):
+                        break
+
             elif (board[i][j] == 'R'):
-                for k in range(len(board)):
+                for k in range(i - 1,-1,-1):
                     if (board[k][j] == '-'):
                         moves += 1
-                for k in range(len(board[i])):
+                    else:
+                        break
+                for k in range(i+1,len(board)):
+                    if (board[k][j] == '-'):
+                        moves += 1
+                    else:
+                        break
+                for k in range(j - 1,-1,-1):
                     if (board[i][k] == '-'):
                         moves += 1
-
-            
+                    else:
+                        break
+                for k in range(j+1,len(board[i])):
+                    if (board[i][k] == '-'):
+                        moves += 1
+                    else:
+                       break
     return moves
 
 # Testing code provided in main():
