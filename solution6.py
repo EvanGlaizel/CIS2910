@@ -12,18 +12,28 @@
 # |---------|----------|
 # |   2,2   |    12    |
 # |---------|----------|
-def dogArrangements( nPassive, nAggressive ):
+def dogArrangements( nPassive, nAggressive ): # n in agressive
     totalFact = 1
     kFact = 1
+    nFact = 1
 
     for i in range(1, nPassive + nAggressive + 1):
         totalFact *= i
 
-    for i in range(1, nAggressive + 1):
+    for i in range(1, nPassive + 1):
         kFact *= i
+
+    for i in range(1, nAggressive + 1):
+        nFact *= i
+
+    if (nPassive == 0 and nAggressive > 1):
+        return 0
+    elif (nAggressive == 0):
+        return totalFact
         
-    print(totalFact, kFact)
-    return totalFact // (kFact)
+        
+    print(totalFact, kFact, nFact)
+    return totalFact // (kFact * nFact)
 
 # Testing code provided in main():
 def main():
