@@ -19,7 +19,7 @@ def dogArrangements( nPassive, nAggressive ):
     for i in range(1, nPassive + nAggressive + 1):
         totalFact *= i
 
-    for i in range(1, nPassive + 1):
+    for i in range(1, nAggressive + 1):
         kFact *= i
         
     print(totalFact, kFact)
