@@ -16,13 +16,13 @@ def dogArrangements( nPassive, nAggressive ):
     nFact = 1
     kFact = 1
 
-    for i in range(1, nPassive + nAggressive):
+    for i in range(1, nPassive + nAggressive + 1):
         nFact *= i
 
-    for i in range(1, nAggressive):
+    for i in range(1, nAggressive + 1):
         kFact *= i
         
-
+    print(nFact, kFact)
     return nFact // kFact
 
 # Testing code provided in main():
