@@ -12,22 +12,21 @@
 # |---------|----------|
 # |   2,2   |    12    |
 # |---------|----------|
-def dogArrangements( nPassive, nAggressive ): # The agressives split passives up into groups. Each group must have at least one passive
-    totalFact = 1
-    kFact = 1
-    nFact = 1
-
-    for i in range(1, nPassive + nAggressive + 1):
-        totalFact *= i
+def dogArrangements( nPassive, nAggressive ):
+    numPassiveArrangements = 1
+    numAggressiveArrangements = 1
+    aggressiveFact = 1
 
     for i in range(1, nPassive + 1):
-        kFact *= i
+        numPassiveArrangements *= i
 
-    for i in range(1, nAggressive + 1):
-        nFact *= i        
-        
-    print(totalFact, kFact, nFact)
-    return totalFact // (kFact * nFact)
+    for i in range(1, nPassive + 2):
+        numAggressiveArrangements *= i
+
+    for i in range(1, nAggressive):
+        aggressiveFact *= i
+
+    return numPassiveArrangements * (numAggressiveArrangements // aggressiveFact)
 
 # Testing code provided in main():
 def main():
