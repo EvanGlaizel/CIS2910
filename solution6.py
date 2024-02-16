@@ -23,7 +23,7 @@ def dogArrangements( nPassive, nAggressive ):
     for i in range(1, nPassive + 2):
         numAggressiveArrangements *= i
 
-    for i in range(1, nAggressive):
+    for i in range(1, nPassive + 2 - nAggressive):
         aggressiveFact *= i
 
     return numPassiveArrangements * (numAggressiveArrangements // aggressiveFact)
