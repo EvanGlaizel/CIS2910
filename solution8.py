@@ -38,7 +38,7 @@ def numDerangements( n ):
     for i in range(1,n+1):
         sum += (fact(n) / fact(i)) * pow(-1, i - 1)
 
-    return sum
+    return fact(n) - sum
 
 # Testing code provided in main():
 def main():
